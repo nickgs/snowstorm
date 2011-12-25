@@ -1,0 +1,64 @@
+<html>
+<head>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+     $(function() {
+       
+       var socket; 
+       var num_tweets = 0; 
+  
+       socket = io.connect('/');
+       
+      
+       socket.on('tweet', function (data) {
+          var nt = $("#snowstorm").append("<img class='snowflake' src='img/snowflake1.png'></img>"); 
+          var tw = $("#tweets").prepend("<div class='tweet'><div class='message'>" + data.data + "</div></div>"); 
+          initPlacement(nt); 
+          randomStyle(tw); 
+          
+          num_tweets++; 
+          
+          if(num_tweets > 50) { 
+            $(".tweets:last").remove(); 
+          }
+       });
+       
+        //shovel the snow when we get to much. 
+        shovel = setInterval(function() {
+          $(".snowflake").each(function() { 
+            $(this).animate({top: '+=10'},10); 
+            
+            var p = $(this).position(); 
+            
+            if(p.top > 768) { 
+              $(this).remove(); 
+            } 
+          });
+         }, 16);
+         
+      }); 
+     
+      //randomly place snowflake on screen. 
+      function initPlacement(nt) { 
+        $(nt + ".snowflake:last").css("left", Math.random()*1024);
+        $(nt + ".snowflake:last").css("opacity", Math.random());
+        $(nt + ".snowflake:last").css("width", Math.random()*200);
+      }
+      
+      //get a little creative with stream text 
+      function randomStyle(tw) { 
+        $(tw + ".tweet:first").css("font-size", (Math.random()*24)+12); 
+      }
+    </script> 
+</head> 
+<body> 
+  <div id="snowstorm">
+  
+  </div> 
+  <div id="tweets"> 
+  
+  </div> 
+</body> 
+</html> 

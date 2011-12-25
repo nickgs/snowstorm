@@ -1,0 +1,9 @@
+.snowflake { 
+  position: absolute; 
+  top: 10px; 
+}
+
+.tweet { 
+  padding: 10px; 
+  opacity: .4; 
+}
