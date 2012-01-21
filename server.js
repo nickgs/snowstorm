@@ -45,33 +45,8 @@ var twit = new twitter({
  
   });
   
-  
-   
-   /*     
-  twit.stream('direct', {track:'nodejs'}, function(stream) {
-      stream.on('data', function (data) {
-        console.log(console.dir(data));
-      });
-      stream.on('end', function (response) {
-        // Handle a disconnection
-      });
-      stream.on('destroy', function (response) {
-        // Handle a 'silent' disconnection from Twitter, no end/error event fired
-      });
-      // Disconnect stream after five seconds
-      setTimeout(stream.destroy, 5000);
-    });     
-    
-    
-    twit.stream('statuses/filter', {'track':'drupal'}, function(stream) {
-      stream.on('data', function (data) {
-        console.log(data.text);
-        console.log("------------------------------"); 
-      });
-    });
-    */
-    
-    //handle regular URL requests
+
+//handle regular URL requests
 app.listen(8080);
 
 function handler(req, res) {
