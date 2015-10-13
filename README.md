@@ -9,4 +9,4 @@ nTwitter
 Socket.IO 
 
 Screen shot: 
-<img src="http://www.nickgs.com/files/screenshot.png">
+<img src="http://nickgs.com/sites/default/files/snowstorm.png">
